@@ -18,7 +18,7 @@ integration, precise audio timing) while keeping deployment low-friction.
 | Auth | Email + password, plus Google OAuth via `@nestjs/passport` |
 | Database | PostgreSQL |
 | ORM | Prisma |
-| Shared types | pnpm workspaces monorepo, `packages/schemas` (Zod) |
+| Shared types | npm workspaces monorepo, `packages/schemas` (Zod) |
 | AI suggestions | Gemini API |
 | Testing | Vitest + React Testing Library, colocated per unit |
 | Deployment | Netlify (frontend), Railway (backend + Postgres) |
@@ -40,8 +40,8 @@ While Express is the most widely used Node framework, NestJS has become the defa
 ### PostgreSQL + Prisma
 The data model is genuinely relational — users, patterns, practice sessions, and per-beat timing results — so a real SQL database earns its place. Prisma was chosen over Drizzle for its migration workflow and documentation, and because it's the more common pairing alongside a structured framework like NestJS. Drizzle (closer to raw SQL, pairs natively with Zod) remains a reasonable alternative if the ORM ever needs revisiting.
 
-### Shared Zod schemas in a pnpm workspace
-Keeping frontend and backend in one monorepo with a shared `packages/schemas` package means the shape of a `Pattern`, `Session`, or `BeatResult` is defined exactly once and validated identically on both client and server — extending the "Zod as source of truth" convention across the client/server boundary instead of duplicating or manually syncing types across two repos.
+### Shared Zod schemas in an npm workspace
+Keeping frontend and backend in one monorepo with a shared `packages/schemas` package means the shape of a `Pattern`, `Session`, or `BeatResult` is defined exactly once and validated identically on both client and server — extending the "Zod as source of truth" convention across the client/server boundary instead of duplicating or manually syncing types across two repos. npm workspaces was chosen over pnpm specifically to avoid adding a tool that isn't already bundled with Node. pnpm's main advantages of disk efficiency and stricter dependency resolution matter more at a scale this project won't reach.
 
 ### Gemini API for AI-driven suggestions
 Anthropic's Claude API has no permanent free tier (only occasional, non-guaranteed trial credits), while Google's Gemini 2.5 Pro is free indefinitely via Google AI Studio (1M token context, 100 requests/day, no card required) — comfortably enough for one recommendation call per practice session. The actual learning content here — calling an LLM with structured context and validating its response against a Zod schema — is identical regardless of provider, so Gemini was chosen purely to avoid a recurring bill on this project.

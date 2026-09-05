@@ -8,16 +8,16 @@ top-to-bottom; the stretch goal at the end is optional.
 
 Goal: an empty-but-working fullstack skeleton, nothing rhythm-related yet.
 
-- [ ] Init pnpm workspace at the repo root (`pnpm-workspace.yaml`, root `package.json`)
-- [ ] Scaffold `apps/web` with Vite + React + TypeScript
-- [ ] Add Tailwind CSS to `apps/web`
-- [ ] Scaffold `apps/api` with the Nest CLI
-- [ ] Create `packages/schemas` (its own `package.json` + `tsconfig.json`, `zod` as a dependency)
-- [ ] Wire `apps/web` and `apps/api` to depend on `packages/schemas` via the workspace protocol
-- [ ] Share root-level ESLint/Prettier/TS config, extended by each package
-- [ ] Add Vitest config to `apps/web` (+ React Testing Library) and `apps/api`
-- [ ] Add a `GET /health` endpoint in Nest; call it from React on load to confirm the two apps talk to each other
-- [ ] Set up GitHub Actions CI: install, lint, typecheck, test on push/PR
+- [x] Init npm workspace at the repo root (switched from pnpm to npm workspaces — see `STACK_DECISIONS.md`)
+- [x] Scaffold `apps/web` with Vite + React + TypeScript
+- [x] Add Tailwind CSS to `apps/web`
+- [x] Scaffold `apps/api` with the Nest CLI
+- [x] Create `packages/schemas` (its own `package.json` + `tsconfig.json`, `zod` as a dependency)
+- [x] Wire `apps/web` and `apps/api` to depend on `packages/schemas` via the workspace protocol
+- [x] Both apps scaffolded with `oxlint` + Prettier by default (Nest CLI v12 default) — no separate ESLint config needed
+- [x] Add Vitest config to `apps/web` (+ React Testing Library) — `apps/api` came with Vitest configured by the Nest CLI
+- [x] Add a `GET /health` endpoint in Nest; call it from React on load to confirm the two apps talk to each other
+- [x] Set up GitHub Actions CI: install, lint, test, build, e2e on push/PR
 
 ## 2. Polymeter engine (frontend-only)
 

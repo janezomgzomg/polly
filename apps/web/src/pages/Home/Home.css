@@ -1,0 +1,28 @@
+.api-status-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+}
+
+.api-status-dot--loading {
+  background-color: #a1a1aa;
+  animation: api-status-pulse 1s ease-in-out infinite;
+}
+
+.api-status-dot--ok {
+  background-color: #22c55e;
+}
+
+.api-status-dot--error {
+  background-color: #ef4444;
+}
+
+@keyframes api-status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
