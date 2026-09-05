@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build -w schemas && npm run build -w web"
+  publish = "apps/web/dist"
+
+# SPA fallback: client-side routing needs every path served index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
